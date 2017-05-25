@@ -31,12 +31,11 @@ var Bar = function() {
 
     this.isHitByPlayer = function(player) {
 
-      if (player.y < this.hBarUp || (player.y + 30) > height - this.hBarDown) {
-            if (player.x > this.xBarDown && player.x < (this.xBarDown + BAR_WIDTH)) {
+      if (player.y < this.hBarUp || (player.y + player.height) > height - this.hBarDown) {
+            if (player.x + player.width> this.xBarDown && player.x < (this.xBarDown + BAR_WIDTH)) {
                 return true;
             }
         }
-
         return false;
     }
 
