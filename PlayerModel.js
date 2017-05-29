@@ -1,10 +1,10 @@
 var gravity = 0.8;
 var velocity = 0;
 var lift = -20;
-var playerColor = '#9b59b6'
+var playerColor = '#e74c3c'
 
 var PlayerModel = function () {
-  
+
     this.x = 120;
     this.y = height / 2;
     this.height = 30;

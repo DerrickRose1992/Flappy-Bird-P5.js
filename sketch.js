@@ -56,7 +56,7 @@ function draw() {
         text("Score " + score, 10, 30);
     }
 
-    if (bars[0].xBarUp === 0) {
+    if (bars[0].xBarUp + barWidth === 0) {
         bars.shift();
     }
 }
