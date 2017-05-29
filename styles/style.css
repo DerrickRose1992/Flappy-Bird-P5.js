@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #19B5FE;
+    color: white;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.text-align-center{
+  text-align: center;
+}
+.game-heading{
+  margin-top:20px;
+  margin-bottom:20px;
+}

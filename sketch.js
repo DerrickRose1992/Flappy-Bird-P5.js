@@ -1,21 +1,34 @@
 var player;
 var score = 0;
 var bars = [];
+var gameOver;
+
+var backgroundColor = '#ecf0f1';
+var textColor = '#7f8c8d'
 
 
 function setup() {
-    createCanvas(480, 680);
-    background('#ecf0f1');
+    var canvas = createCanvas(480, 680);
+    canvas.parent('game');
+
+    background(backgroundColor);
 
     player = new PlayerModel()
-    bar = new Bar();
 
+    score = 0;
+    gameOver = false;
+
+    bars = [];
+    bar = new Bar();
     bars.push(bar);
+
+    textFont("Fjalla One");
 }
 
 function draw() {
+    background(backgroundColor);
 
-    background('#ecf0f1');
+    fill(textColor);
     textSize(32);
     text("Score " + score, 10, 40);
 
@@ -27,7 +40,7 @@ function draw() {
         bars.push(bar);
     }
 
-    for (var i = bars.length-1; i >= 0; i--) {
+    for (var i = bars.length - 1; i >= 0; i--) {
         bars[i].update();
         bars[i].draw();
     }
@@ -35,6 +48,7 @@ function draw() {
 
     if (bars[0].isHitByPlayer(player) || player.isTopOrBottomHit()) {
         noLoop();
+        gameOver = true;
     }
 
     if (bars[0].isScore(player)) {
@@ -42,13 +56,25 @@ function draw() {
         text("Score " + score, 10, 30);
     }
 
-    if (bars[0].xBarUp + BAR_WIDTH === 0) {
+    if (bars[0].xBarUp === 0) {
         bars.shift();
     }
-
-
 }
 
 function keyPressed() {
+    if (key == ' ') {
+        if (gameOver) {
+            setup();
+            loop();
+        }
+        player.moveUp();
+    }
+}
+
+function touchStarted() {
+    if (gameOver) {
+        setup();
+        loop();
+    }
     player.moveUp();
 }

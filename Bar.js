@@ -1,11 +1,12 @@
-const MAX_HEIGHT = 300;
-const MIN_HEIGHT = 100;
-const BAR_WIDTH = 30;
-const SPEED = 5;
+var maxHeight = 300;
+var minHeight = 100;
+var barWidth = 30;
+var speed = 5;
+var barColor = '#1abc9c';
 
 var Bar = function() {
 
-    this.gap = Math.floor(Math.random() * MAX_HEIGHT) + MIN_HEIGHT;
+    this.gap = Math.floor(Math.random() * maxHeight) + minHeight;
 
     this.xBarUp = width;
     this.yBarUp = 0;
@@ -17,22 +18,21 @@ var Bar = function() {
 
 
     this.draw = function() {
-        fill('#e74c3c');
+        fill(barColor);
         noStroke();
 
-        rect(this.xBarDown, this.yBarDown, BAR_WIDTH, this.hBarDown);
-        rect(this.xBarUp, this.yBarUp, BAR_WIDTH, this.hBarUp);
+        rect(this.xBarDown, this.yBarDown, barWidth, this.hBarDown);
+        rect(this.xBarUp, this.yBarUp, barWidth, this.hBarUp);
     }
 
     this.update = function() {
-        this.xBarDown -= SPEED;
-        this.xBarUp -= SPEED;
+        this.xBarDown -= speed;
+        this.xBarUp -= speed;
     }
 
     this.isHitByPlayer = function(player) {
-
       if (player.y < this.hBarUp || (player.y + player.height) > height - this.hBarDown) {
-            if (player.x + player.width> this.xBarDown && player.x < (this.xBarDown + BAR_WIDTH)) {
+            if (player.x + player.width> this.xBarDown && player.x < (this.xBarDown + barWidth)) {
                 return true;
             }
         }
@@ -40,7 +40,7 @@ var Bar = function() {
     }
 
     this.isScore = function(player) {
-        if (player.x === this.xBarDown + BAR_WIDTH) {
+        if (player.x === this.xBarDown + barWidth) {
             return true;
         }
         return false;

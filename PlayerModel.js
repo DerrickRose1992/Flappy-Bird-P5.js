@@ -1,16 +1,17 @@
-var gravity = 0.6;
+var gravity = 0.8;
 var velocity = 0;
-var lift = -15;
+var lift = -20;
+var playerColor = '#9b59b6'
 
 var PlayerModel = function () {
-
+  
     this.x = 120;
     this.y = height / 2;
     this.height = 30;
     this.width = 30;
 
     this.draw = function () {
-        fill('#2ecc71');
+        fill(playerColor);
         noStroke();
         rect(this.x, this.y, this.width, this.height);
     }
